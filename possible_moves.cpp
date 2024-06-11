@@ -16,7 +16,7 @@ bool valid_etlj(int startSquare, int endSquare, field fields[]) // even top left
     return false;
 }
 
-bool valid_etrj(int startSquare, int endSquare, field fields[]) // even top right jump
+bool valid_etrj(int startSquare, int endSquare, field fields[]) // even top next_child jump
 {
     bool piecePresent = (fields[startSquare - 4].pieceType != NONE);
     if(!piecePresent)

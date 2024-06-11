@@ -58,6 +58,8 @@ public:
 
     void play_turn(std::vector<int> moves, team playerTeam);
 
+    bool check_game_end();
+
 };
 
 

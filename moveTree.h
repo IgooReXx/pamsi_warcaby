@@ -30,8 +30,8 @@ class moveTree {
     void build_down(node* currnetNode);
     int minimax_alphabeta(node* currentNode, int depth, int alpha, int beta, bool maximizingPlayer);
 
-    node* down(node* currentNode);
-    node* right(node* currentNode);
+    node* first_child(node* currentNode);
+    node* next_child(node* currentNode);
 
 
 public:

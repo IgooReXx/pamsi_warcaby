@@ -8,7 +8,7 @@
 #include "field.h"
 
 bool valid_etlj(int startSquare, int endSquare, field fields[]); // even top left jump
-bool valid_etrj(int startSquare, int endSquare, field fields[]); // even top right jump
+bool valid_etrj(int startSquare, int endSquare, field fields[]); // even top next_child jump
 bool valid_eblj(int startSquare, int endSquare, field fields[]);
 bool valid_ebrj(int startSquare, int endSquare, field fields[]);
 

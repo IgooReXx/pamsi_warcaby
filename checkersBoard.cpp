@@ -24,6 +24,8 @@ checkersBoard::checkersBoard()
         board[i] = field{WHITE, MAN};
     }
 
+
+
     //std::swap(board[11], board[15]);
     //std::swap(board[18], board[22]);
 
@@ -365,7 +367,10 @@ std::vector<std::pair<checkersBoard,std::vector<int>>> checkersBoard::possible_m
                 for(auto moveIterator : moveVector)
                 {
                     if (bufferNode.move_check(boardIterator, moveIterator, tmpField.pieceTeam))
+                    {
+                        bufferNode.turn++;
                         bufferNode.move_make(boardIterator, moveIterator, tmpField.pieceTeam);
+                    }
                 }
                 moveVector.insert(moveVector.begin(), firstMove);
                 moveNodes.emplace_back(bufferNode, moveVector);
@@ -388,6 +393,7 @@ std::vector<std::pair<checkersBoard,std::vector<int>>> checkersBoard::possible_m
                         jumpStartPos = jumpIterator;
                         tmpField.pieceTeam = tmpField.pieceTeam;
                     }
+                    bufferNode.turn++;
                 }
                 jumpVector.insert(jumpVector.begin(), firstJump);
                 jumpNodes.emplace_back(bufferNode,jumpVector);
@@ -466,4 +472,21 @@ void checkersBoard::set_enemy(team enemyTeam)
 team checkersBoard::get_enemy()
 {
     return enemy;
+}
+
+bool checkersBoard::check_game_end()
+{
+    int whiteCount = 0, blackCount = 0;
+    for(int fieldIterator = 0; fieldIterator < 32; ++fieldIterator)
+    {
+        if(board[fieldIterator].pieceTeam == WHITE)
+            whiteCount++;
+        if(board[fieldIterator].pieceTeam == BLACK)
+            blackCount++;
+    }
+    if(whiteCount == 0)
+        return true;
+    if(blackCount == 0)
+        return true;
+    return false;
 }
